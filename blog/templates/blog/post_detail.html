@@ -1,25 +1,30 @@
 {% extends 'blog/base.html' %}
-
 {% block content %}
 {% if user.is_authenticated %}
 <nav>
-    <a href="{% url 'blog:post_edit' pk=post.pk %}">수정하기</a>
+    <a href="{% url 'blog:post_edit' pk=post.pk %}" >수정하기</a>
+    <a href="{% url 'blog:post_remove' pk=post.pk %}">삭제하기</a>
 </nav>
 {% endif %}
-<div>
-    {% if post.published_date %}
-        <div>
-            {{ post.published_date }}
-        </div>
-    {% else %}
-        {% if user.is_authenticated %}
-        <a href="{% url 'blog:post_publish' pk=post.pk %}">배포하기</a>
+    <div>
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
         {% endif %}
-    {% endif %}
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.text|linebreaksbr }}</p>
-    {% if user.is_authenticated %}
-        <a href="{% url 'blog:post_remove' pk=post.pk %}">삭제하기</a>
-    {% endif %}
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+<div>
+    <hr>
+    {% for comment in post.comments.all %}
+        <div>
+            <p>{{ comment.created_date }}</p>
+            <p>{{ comment.author }}</p>
+            <p>{{ comment.text|linebreaksbr }}</p>
+        </div>
+    {% empty%}
+        <p>일등으로 댓글 달어보자! ^^7</p>
+    {% endfor %}
 </div>
 {% endblock %}
