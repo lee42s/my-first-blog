@@ -80,7 +80,6 @@ h1.logo a{
 }
 p.Logout{
 	float: right;
-	width: 45%;
 	color: #fff;
 	font-size: 0.95em;
 }
@@ -88,7 +87,6 @@ p.Logout a{
   font-size: 0.8em;
   border: 1px solid #fff;
   text-align: center;
-  width: 40%;
   display: block;
   padding: 5px;
   margin-top: 5px;
@@ -106,10 +104,12 @@ div.writer a{
 	border: 1px solid #fff;
 	padding: 0px 5px;
 }
+div.writer a.draft_list{
+	margin-bottom: 0px;
+}
 p.Logout a:hover ,div.writer a:hover , h1.logo a:hover{
 	color: #af8e6e;
 }
 /* tablet & desktop */
 @media all and (min-width: 979px) {
-
 }

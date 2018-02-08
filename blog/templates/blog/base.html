@@ -12,14 +12,14 @@
             <div class="wrap clearfix">
                 <h1 class="logo"><a href="/">LKH BLOG</a></h1>
                 {% if user.is_authenticated %}
-                    <nav class="gnb">
+                    <nav class="gnb clearfix">
                         <p class="Logout">
                             안녕하세요. <span class="username">{{ user.username }}</span>님
                             <a href="{% url 'logout' %}">Log out</a>
                         </p>
                         <div class="writer">
                             <a href="{% url 'blog:post_new' %}">새글쓰기</a>
-                            <a href="{% url 'blog:post_draft_list' %}">초안목록보기</a>
+                            <a class="draft_list" href="{% url 'blog:post_draft_list' %}">초안목록보기</a>
                         </div>
                 {% else %}
                         <a class="" href="{% url 'login' %}">로그인</a>
