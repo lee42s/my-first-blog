@@ -23,6 +23,7 @@ footer,header,main,nav,section{
 body{
 	margin: 0px;
 	font-family: 'Nanum Myeongjo', serif;
+	font-size: 15px;
 }
 h1, h2, h3, h4, h5, h6{
   margin: 0px;
@@ -32,7 +33,6 @@ a{
 	color: #000;
 }
 ul{
-	font-size: 0px;
 	margin: 0px;
 	padding: 0px;
 	list-style: none;
@@ -67,48 +67,35 @@ img{
 /*moblie all*/
 header{
 	background-color: #000;
-	padding: 30px 0px;
 }
-h1.logo{
-	text-align: center;
-	margin-bottom: 20px;
+a.LKH{
+   color: #fff
 }
-h1.logo a{
-	font-size: 1.25em;
-	width: 100%;
+.logo{
+  	text-align: center;
+  	padding: 30px 0px;
+}
+.f16_c_f{
+	font-size: 16px;
 	color: #fff;
 }
-p.Logout{
-	float: right;
-	color: #fff;
-	font-size: 0.95em;
-}
-p.Logout a{
-  font-size: 0.8em;
-  border: 1px solid #fff;
-  text-align: center;
-  display: block;
-  padding: 5px;
-  margin-top: 5px;
-  color: #fff;
-}
-div.writer{
+nav.gnb{
 	float: left;
 }
-div.writer a{
-	color: #fff;
+nav.linksub{
+	float: right;
+	margin-bottom: 20px;
+}
+a.logout{
 	display: block;
-	text-align: center;
-	margin-bottom: 10px;
-	font-size: 0.95em;
 	border: 1px solid #fff;
-	padding: 0px 5px;
+	padding: 5px;
 }
-div.writer a.draft_list{
-	margin-bottom: 0px;
+ol{
+	padding: 0px;
 }
-p.Logout a:hover ,div.writer a:hover , h1.logo a:hover{
-	color: #af8e6e;
+ol>li{
+	display: block;
 }
 /* tablet & desktop */
 @media all and (min-width: 979px) {

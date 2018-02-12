@@ -1,16 +1,10 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-<div class="content wrap">
+<div>
     {% for post in posts %}
                 <h1 class="title">
                     <a href="{% url 'blog:post_detail' pk=post.pk %}">{{ post.title }}</a>
                 </h1>
-                {% if user.is_authenticated %}
-                <div>
-                    <a href="{% url 'blog:post_edit' pk=post.pk %}" >[수정하기]</a>
-                    <a href="{% url 'blog:post_remove' pk=post.pk %}">[삭제하기]</a>
-                </div>
-                {% endif %}
                  {{ block.super }}
                 <p>published: {{ post.published_date }}</p>
                 <p>create: {{ post.created_date }}</p>

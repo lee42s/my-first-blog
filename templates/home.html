@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <ol class="post">
+        {% for post in post%}
+        <li>{{ forloop.counter }}.<a href="{% url 'blog:post_detail' pk=post.pk %}"> {{ post }}</a></li>
+        {% endfor %}
+    </ol>
+    <ol class="board">
+        {% for board in board%}
+        <li>{{ forloop.counter }}.<a href="{% url 'board:post_detail' pk=board.pk %}">{{ board }}</a></li>
+        {% endfor %}
+    </ol>
+</div>
+{% endblock %}
