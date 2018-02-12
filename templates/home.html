@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-<div>
+<div class="wrap">
     <ol class="post">
+        <h2>블로그 최신글</h2>
         {% for post in post%}
         <li>{{ forloop.counter }}.<a href="{% url 'blog:post_detail' pk=post.pk %}"> {{ post }}</a></li>
         {% endfor %}
     </ol>
     <ol class="board">
+        <h2>게시판 최신글</h2>
         {% for board in board%}
         <li>{{ forloop.counter }}.<a href="{% url 'board:post_detail' pk=board.pk %}">{{ board }}</a></li>
         {% endfor %}
