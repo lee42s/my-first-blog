@@ -1,7 +1,8 @@
 from django.contrib import admin
+from board.models import Board,Category,File
 
-from board.models import Board,Category
 
 # Register your models here.
 admin.site.register(Board)
 admin.site.register(Category)
+admin.site.register(File)

@@ -14,10 +14,12 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    category = Category.objects.all()
+    return render(request, 'blog/post_detail.html', {'post': post,'category':category})
 
 @login_required
 def post_new(request):
+    category = Category.objects.all()
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
@@ -28,7 +30,7 @@ def post_new(request):
             return redirect('blog:post_detail', pk=post.pk)
     else:
         form = PostForm()
-    return render(request, 'blog/post_edit.html',{'form':form})
+    return render(request, 'blog/post_edit.html',{'form':form,'category':category})
 
 @login_required
 def post_edit(request,pk):

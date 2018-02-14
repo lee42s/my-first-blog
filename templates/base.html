@@ -12,7 +12,7 @@
                 <h1 class="logo"><a class="LKH" href="/">LKH</a></h1>
                 <nav class="gnb">
                     <ul>
-                        <li><a class="f16_c_f" href="{% url 'blog:post_list' %}">블로그</a></li>
+                        <li class="gnbli"><a class="f16_c_f" href="{% url 'blog:post_list' %}">블로그</a></li>
                         {% for cat in category %}
                             <li><a class="f16_c_f" href="{% url 'board:post_list' %}?category={{ cat }}">{{ cat.title }}</a></li>
                         {% endfor %}

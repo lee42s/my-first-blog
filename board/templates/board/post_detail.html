@@ -12,8 +12,11 @@
     {% if post.category == None %}
         <p>게시판: {{ post.category }}</p>
     {% else %}
-        <p>게시판:<a href="{% url 'board:post_list'  %}?category={{ category.name }} ">{{ post.category.title }}</a></p>
+        <p>게시판:<a href="{% url 'board:post_list' %}?category={{ post.category }} ">{{ post.category.title }}</a></p>
     {% endif %}
     <p>{{ post.text|linebreaksbr }}</p>
+    {% for files in files %}
+        <p><a href="{{ files }}">{{ files }}</a></p>
+    {% endfor %}
 </div>
 {% endblock %}
