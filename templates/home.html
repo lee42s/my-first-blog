@@ -10,7 +10,17 @@
     <ol class="board">
         <h2>게시판 최신글</h2>
         {% for board in board%}
-        <li>{{ forloop.counter }}.<a href="{% url 'board:post_detail' pk=board.pk %}">{{ board }}</a></li>
+            {% if board.category_id == 1 %}
+                <li>{{ forloop.counter }}.<a href="{% url 'board:post_detail' pk=board.pk %}">{{ board.title }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+     <ol class="board">
+        <h2>새소식</h2>
+        {% for board in board%}
+          {% if board.category_id == 2 %}
+            <li>{{ forloop.counter }}.<a href="{% url 'board:post_detail' pk=board.pk %}">{{ board.title }}</a></li>
+         {% endif %}
         {% endfor %}
     </ol>
 </div>

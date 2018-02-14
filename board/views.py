@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect, get_object_or_404
-from board.models import Board
+from board.models import Board,Category
 from django.contrib.auth.decorators import login_required
 from board.forms import BoardForm
 
@@ -8,13 +8,21 @@ from board.forms import BoardForm
 
 
 def post_list(request):
-    posts = Board.objects.all()
-    return render(request, 'board/post_list.html', {'posts':posts})
+    ctgry = request.GET['category']
+    # ctgry =request.GET.get('category')
+    if ctgry != '':
+        posts = Board.objects.filter(category__name = ctgry)
+    else:
+        posts = Board.objects.all()
+
+    category = Category.objects.all()
+    return render(request, 'board/post_list.html', {'posts':posts, 'category':category})
 
 
 def post_detail(request, pk):
     post = get_object_or_404(Board, pk=pk)
-    return render(request, 'board/post_detail.html', {'post': post})
+    category = Category.objects.all()
+    return render(request, 'board/post_detail.html', {'post': post, 'category':category})
 
 @login_required
 def post_new(request):

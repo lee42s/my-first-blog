@@ -2,13 +2,15 @@ from django.shortcuts import render
 from blog.models import Post ,Comment
 from django.utils import timezone
 from blog.forms import PostForm,CommentForm
+from board.models import Category
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    category = Category.objects.all()
+    return render(request, 'blog/post_list.html', {'posts': posts,  'category':category})
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)

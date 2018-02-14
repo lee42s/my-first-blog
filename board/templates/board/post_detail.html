@@ -1,14 +1,19 @@
 {% extends 'board/base.html' %}
-{% block content %}
+{% block sub_content %}
+{% if user.is_authenticated %}
+<nav><a href="">수정하기</a></nav>
+{% endif %}
 <div>
     {% if user.is_authenticated %}
-    <nav>
-        <a href="">수정하기</a>
-        <a href="">삭제하기</a>
-    </nav>
+    <a href="">삭제하기</a>
     {% endif %}
     <h1>{{ post.title }}</h1>
     <p>글쓴이:{{ post.author }}, 작성일: {{ post.created_date }}, 수정일: {{ post.modified_date }}</p>
+    {% if post.category == None %}
+        <p>게시판: {{ post.category }}</p>
+    {% else %}
+        <p>게시판:<a href="{% url 'board:post_list'  %}?category={{ category.name }} ">{{ post.category.title }}</a></p>
+    {% endif %}
     <p>{{ post.text|linebreaksbr }}</p>
 </div>
 {% endblock %}

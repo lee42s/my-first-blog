@@ -1,18 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}{{ block.super }} | 블로그{% endblock %}
-{% block content %}
 <div class="box">
-  {% block sub_content %}
-    {% if user.is_authenticated %}
-      <nav>
-          <ul>
-              <li><a href="{% url 'blog:post_new' %}">새글쓰기</a></li>
-              <li><a href="{% url 'blog:post_draft_list' %}">초안목록보기</a></li>
-               <li><a href="{% url 'blog:post_edit' pk=post.pk %}" >[수정하기]</a></li>
-                <li><a href="{% url 'blog:post_remove' pk=post.pk %}">[삭제하기]</a></li>
-          </ul>
-      </nav>
-    {% endif %}
-  {% endblock %}
+{% block sub_content %}
+{% endblock %}
 </div>
+{% block content %}
 {% endblock %}

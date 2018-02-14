@@ -1,5 +1,5 @@
 from blog.models import Post
-from board.models import Board
+from board.models import Board,Category
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from django.core.urlresolvers import reverse_lazy
@@ -9,7 +9,8 @@ from django.views.generic.base import TemplateView
 def home(request):
     post = Post.objects.order_by("-created_date")[:5]
     board = Board.objects.order_by("-created_date")[:5]
-    return render(request, "home.html", {'post': post, 'board': board})
+    category = Category.objects.all()
+    return render(request, "home.html", {'post': post, 'board': board, 'category':category})
 
 class UserRegister(CreateView):
     template_name = 'registration/register.html'

@@ -13,7 +13,9 @@
                 <nav class="gnb">
                     <ul>
                         <li><a class="f16_c_f" href="{% url 'blog:post_list' %}">블로그</a></li>
-                        <li><a class="f16_c_f" href="{% url 'board:post_list' %}">게시판</a></li>
+                        {% for cat in category %}
+                            <li><a class="f16_c_f" href="{% url 'board:post_list' %}?category={{ cat }}">{{ cat.title }}</a></li>
+                        {% endfor %}
                     </ul>
                 </nav>
                 <nav class="linksub">
@@ -22,7 +24,7 @@
                             <li><p class="f16_c_f">안녕하세요. '{{ user.username }}'님</p></li>
                              <li><a class="f16_c_f" href="{% url 'password_change' %}">비밀번호 변경</a></li>
                             <li><a class="f16_c_f" href="{% url 'logout' %}">로그아웃</a></li>
-                            {% else %}
+                        {% else %}
                             <li><a class="f16_c_f" href="{% url 'login' %}">로그인</a></li>
                             <li><a class="f16_c_f" href="{% url 'register' %}">회원가입</a></li>
                         </ul>
