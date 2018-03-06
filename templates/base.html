@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}LKH{% endblock %}</title>
-        {% load staticfiles %}
-        <link rel="stylesheet" href="{% static 'css/common.css' %}">
-    </head>
-    <body>
-        <header>
-            <div class="wrap clearfix">
-                <h1 class="logo"><a class="LKH" href="/">LKH</a></h1>
-                <nav class="gnb">
-                    <ul>
-                        <li class="gnbli"><a class="f16_c_f" href="{% url 'blog:post_list' %}">블로그</a></li>
-                        {% for cat in category %}
-                            <li><a class="f16_c_f" href="{% url 'board:post_list' %}?category={{ cat }}">{{ cat.title }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </nav>
-                <nav class="linksub">
-                    {% if user.is_authenticated %}
-                        <ul>
-                            <li><p class="f16_c_f">안녕하세요. '{{ user.username }}'님</p></li>
-                             <li><a class="f16_c_f" href="{% url 'password_change' %}">비밀번호 변경</a></li>
-                            <li><a class="f16_c_f" href="{% url 'logout' %}">로그아웃</a></li>
-                        {% else %}
-                            <li><a class="f16_c_f" href="{% url 'login' %}">로그인</a></li>
-                            <li><a class="f16_c_f" href="{% url 'register' %}">회원가입</a></li>
-                        </ul>
-                    {% endif %}
-                </nav>
-            </div>
-        </header>
-        {% block content %}
-        {% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>한국마이스터 인트라넷</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="{% url 'home' %}">홈</a></li>
+        {% if user.is_authenticated %}
+            <li><a>안녕하세요. '{{ user.username }}'님</a></li>
+            <li><a href="{% url 'logout' %}">로그아웃</a></li>
+            <li><a href="{% url 'password_change' %}">비밀번호 변경</a></li>
+            <li><a href="{% url 'admin:index' %}">관리자</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">로그인</a></li>
+            <li><a href="{% url 'register' %}">회원가입</a></li>
+        {% endif %}
+    </ul>
+
+</nav>
+<h1>{% block title %}{% endblock %}</h1>
+<section>
+    {% block content %}{% endblock %}
+</section>
+<footer></footer>
+</body>
 </html>
